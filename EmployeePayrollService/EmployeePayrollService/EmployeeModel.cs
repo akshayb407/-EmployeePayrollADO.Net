@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeePayrollService
 {
-     class EmployeeModel
+     public class EmployeeModel
     {
 
         public int EmployeeID { get; set; }

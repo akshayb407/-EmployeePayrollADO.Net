@@ -2,7 +2,7 @@
 using EmployeePayrollService;
 namespace EmployeePayrollService
 {
-    class Program
+   public class Program
     {
         static void Main(string[] args)
         {
@@ -10,9 +10,9 @@ namespace EmployeePayrollService
 
             EmployeeRepo repo = new EmployeeRepo();
             EmployeeModel model = new EmployeeModel();
-            Console.WriteLine("Enter the id");
-            repo.GetAllEmployee(Console.ReadLine());
-            Console.ReadLine();
+           
+            
+            
 
         }
     }

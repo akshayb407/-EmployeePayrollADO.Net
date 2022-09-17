@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
+
 
 namespace EmployeePayrollService
 {
-    class EmployeeRepo
+     public class EmployeeRepo
     {
         //DESKTOP-A89I0AG\AKSHAY
         public static string connectionString = @"Server=DESKTOP-A89I0AG;Database=Payroll_service;Trusted_Connection=true;";
-        public bool GetAllEmployee(string name)
+        SqlConnection conn = new SqlConnection(connectionString);
+        public bool GetAllEmployee(string id)
         {
             try
             {
@@ -20,7 +23,7 @@ namespace EmployeePayrollService
                 EmployeeModel employeeModel = new EmployeeModel();
                 using (connection)
                 {
-                    string query = @"select * from employee_payroll where name =" +name;
+                    string query = @"select * from employee_payroll where id=" + id;
                     SqlCommand cmd = new SqlCommand(query, connection);
                     connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
@@ -31,10 +34,10 @@ namespace EmployeePayrollService
                             employeeModel.EmployeeID = Convert.ToInt32(dr[0]);
                             employeeModel.EmployeeName = dr[1].ToString();
 
-                           
+
 
                             Console.WriteLine(employeeModel.EmployeeID + " " + employeeModel.EmployeeName);
-                           // Console.WriteLine(employeeModel.EmployeeName+" "+employeeModel.BasicPay+ " "+employeeModel.StartDate +" "+ employeeModel.Gender+" "+ employeeModel.PhoneNumber+" "+employeeModel.Address+" "+ employeeModel.Department+" "+ employeeModel.Deductions+" "+ employeeModel.TaxablePay+" "+ employeeModel.Tax+" "+ employeeModel.NetPay);
+                            // Console.WriteLine(employeeModel.EmployeeName+" "+employeeModel.BasicPay+ " "+employeeModel.StartDate +" "+ employeeModel.Gender+" "+ employeeModel.PhoneNumber+" "+employeeModel.Address+" "+ employeeModel.Department+" "+ employeeModel.Deductions+" "+ employeeModel.TaxablePay+" "+ employeeModel.Tax+" "+ employeeModel.NetPay);
                             System.Console.WriteLine("\n");
                         }
                     }
@@ -98,4 +101,7 @@ namespace EmployeePayrollService
             return false;
         }
     }
+    
 }
+    
+
